@@ -65,3 +65,4 @@ lab/
 /detox-*.tar.bz2
 /detox-*.zip
 detoxRenameTables/wow.tar.gz
+detoxRenameTables/processed.log

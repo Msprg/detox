@@ -68,6 +68,7 @@ struct detox_options {
 
 	struct detox_sequence_entry *sequence_to_use;
 	struct detox_ignore_entry *files_to_ignore;
+    //struct detox_ignore_entry *folders_to_ignore;
 
 	char *sequence_name;
 

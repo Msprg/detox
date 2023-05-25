@@ -113,7 +113,9 @@ ignore {
         filename ".db";
         filename ".conf";
         filename ".ini";
-
+        filename ".dll";
+        filename ".exe";
+        filename ".dxf";
 
 #        filename "";
 };

@@ -134,7 +134,8 @@ unsigned char *parse_file(unsigned char *filename, struct detox_options *options
 	}
 
 	if (options->verbose || options->dry_run) {
-		printf("%s -> %s\n", old_filename, new_filename);
+		//printf("%s\n%s\n\n", old_filename, new_filename);
+		printf("%s\n%s\n\n", old_filename_ptr, new_filename);
 	}
 
 	if (options->dry_run) {
@@ -300,7 +301,20 @@ static int ignore_file(unsigned char *filename, struct detox_options *options)
 
 	ignore_walk = options->files_to_ignore;
 	while (ignore_walk != NULL) {
-		if (strcmp(filename, ignore_walk->filename) == 0) {
+		size_t slen = strlen(filename);
+    		size_t suffix_len = strlen(ignore_walk->filename);
+
+		//int suffix = suffix_len <= slen && !strcmp(filename + slen - suffix_len, ignore_walk->filename);
+		//printf("%d\n", suffix);
+		//if (strstr(filename, ignore_walk->filename) != NULL) {
+		//if (suffix > 0) {
+		//
+		if (filename[0] == '_') {
+			//printf("IGNORED -> %s\t(Fname begins with '_')\n\n", filename);
+			return 1;
+		}
+		if (suffix_len <= slen && !strcmp(filename + slen - suffix_len, ignore_walk->filename)) {
+			//printf("IGNORED -> %s\t(Contains suffix on ignore list)\n\n", filename);
 			return 1;
 		}
 		ignore_walk = ignore_walk->next;
